@@ -1,24 +1,36 @@
 
 
-const mysql = require('mysql')
+const mysql = require('mysql2/promise')
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'kchr',
-    port: 3306
-})
+const config = require('../config.js')
 
-connection.connect((error) => {
-    if(error) {
-        return () => {
-            connection.connect()
-            console.log(error)
-        }
-    } else {
-        return console.log('connected is true')
+exports.get = async function (query) {
+    try {
+        const conn = await mysql.createConnection(config)
+
+        const [rows, fields] = await conn.execute(query)
+
+        console.log('connection is true')
+
+        conn.end()
+
+        return rows
+
+    } catch (e) {
+        console.error(e)
     }
-})
+}
 
-module.exports = connection
+exports.send = async function (query) {
+    try {
+        const conn = await mysql.createConnection(config)
+
+        conn.query(query)
+
+        console.log('connection is true')
+
+        conn.end()
+    } catch (e) {
+        console.error(e)
+    }
+}

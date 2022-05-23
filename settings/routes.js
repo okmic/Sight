@@ -2,6 +2,8 @@
 module.exports = (app) => {
     const indexControler = require('./../Controler/indexControler.js')
 
-    app.route('/all').get(indexControler.all)
-
+    app.route('/').get(indexControler.all)
+    app.route('/new').get(indexControler.new)
+    app.route('/new/create').post(indexControler.create)
+    app.route('/download').get(indexControler.download)
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+    <%- include('./partials/navbar'); %>
+        <div class="container">
+            <h1>Hello</h1>
+
+            <div class="container">
+                <table class="table table-condensed">
+                    <% for(var place of data) { %>
+                    <tr>
+                        <td class="active"><%= place.id %></td>
+                        <td class="success"><%= place.title %></td>
+                        <td class="warning"><%= place.body %></td>
+                        <td class="danger">...</td>
+                        <td class="info">...</td>
+                    </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+
+
+
+</body>
+
+</html>
