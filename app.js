@@ -2,13 +2,14 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const bodyParser = require('body-parser')
+const upload = require('express-fileupload')
 
 app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'templates'))
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(upload())
 
 const port = process.env.PORT ?? 5000
 
