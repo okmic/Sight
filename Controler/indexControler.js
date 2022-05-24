@@ -8,8 +8,6 @@ exports.all = async (req, res) => {
    try {
       const data = await db.get('select * from data')
 
-      console.log(data)
-
       res.render('index', {title: 'Кчр', active: 'download', data})
    } catch (e) {
       console.error(e)
@@ -47,6 +45,5 @@ exports.create = async (req, res) => {
 
 exports.download = (req, res) => {
    res.download(path.resolve(__dirname, '..', 'app.js'))
-   console.log(req.requestTime)
 }
 
