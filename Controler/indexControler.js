@@ -43,7 +43,4 @@ exports.create = async (req, res) => {
    }
 }
 
-exports.download = (req, res) => {
-   res.download(path.resolve(__dirname, '..', 'app.js'))
-}
 
