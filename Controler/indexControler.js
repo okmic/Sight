@@ -38,9 +38,13 @@ exports.create = async (req, res) => {
            res.redirect('/')
        })} else {
       const {name, title} = req.body
-      db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`) VALUES " + `(NULL, "${name}", "${title}", 'cxzcxz', CURRENT_TIMESTAMP);`)
+      db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`) VALUES " + `(NULL, "${name}", "${title}", 'img/no_image.jpg', CURRENT_TIMESTAMP);`)
       res.redirect('/')
    }
 }
 
-
+exports.onePlace  = async (req, res) => {
+   const {id} = req.params
+   const data = await db.get(`SELECT * FROM \`data\` WHERE \`id\` = ${id}`)
+   res.render('place',  {title: data[0].title, active: 'place', data})
+}

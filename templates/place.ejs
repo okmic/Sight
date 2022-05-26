@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+    <%- include('./partials/navbar'); %>
+        
+            
+                    <% for(var place of data) { %></a>
+                        <div class="container wrapperPlace">
+                                <h1 class="navbar-text textPlace"><%= place.title %></h1>
+                                <h3 class="navbar-text textPlace"><%= place.body %></h3>
+                               <img src="<%= place.imgSrc %>" alt="<%= place.title %>">
+                        </div>
+                    <% } %>
+                
+
+</body>
+
+</html>
