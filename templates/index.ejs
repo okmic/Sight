@@ -12,10 +12,10 @@
                 <table class="table table-condensed">
                     <% for(var place of data) { %></a>
                             <tr>
-                                <td class="active"><a class="link" href="/<%= place.id %>"><%= place.id %></a></td>
-                                <td class="success"><a href="/<%= place.id %>"><%= place.title %></a></td>
-                                <td class="warning"><a href="/<%= place.id %>"><%= place.body %></a></td>
-                                <td class="info"><a href="/<%= place.id %>"><img width="100px" src="<%= place.imgSrc %>" alt="<%= place.title %>"></a></td></a>
+                                <td class="active"><a  href="/place/<%= place.id %>"><%= place.id %></a></td>
+                                <td class="success"><a href="/place/<%= place.id %>"><%= place.title %></a></td>
+                                <td class="warning"><a href="/place/<%= place.id %>"><%= place.body %></a></td>
+                                <td class="info"><a href="/place/<%= place.id %>"><img width="100px" src="<%= place.imgSrc %>" alt="<%= place.title %>"></a></td></a>
                             </tr>
                     <% } %>
                 </table>

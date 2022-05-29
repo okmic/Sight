@@ -8,7 +8,7 @@ exports.all = async (req, res) => {
    try {
       const data = await db.get('select * from data')
 
-      res.render('index', {title: 'Кчр', active: 'download', data})
+      res.render('index', {title: 'Кчр', active: 'main', data})
    } catch (e) {
       console.error(e)
    }
@@ -45,6 +45,7 @@ exports.create = async (req, res) => {
 
 exports.onePlace  = async (req, res) => {
    const {id} = req.params
+   
    const data = await db.get(`SELECT * FROM \`data\` WHERE \`id\` = ${id}`)
-   res.render('place',  {title: data[0].title, active: 'place', data})
+    res.render('place',  {title: 'Кчр', active: 'place', data}) 
 }
