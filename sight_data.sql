@@ -82,8 +82,15 @@ INSERT INTO `reviews` (`id`, `ref_id`,`name`, `comment`, `grade`, `date`) VALUES
 (1, 3, 'Ахмед', 'Был там, очень понравилось', 5, '2022-06-04 14:40:18');
 
 --
--- Индексы сохранённых таблиц
+-- Структура таблицы `images`
 --
+
+CREATE TABLE `images` (
+  `id` int NOT NULL,
+  `ref_id` int NOT NULL,
+  `img_src` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
 
 --
 -- Индексы таблицы `data`
@@ -92,18 +99,17 @@ ALTER TABLE `data`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
 -- Индексы таблицы `reviews`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- Индексы таблицы `images`
 --
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT для таблицы `data`
@@ -117,6 +123,13 @@ COMMIT;
 --
 ALTER TABLE `reviews`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+--
+-- AUTO_INCREMENT для таблицы `reviews`
+--
+ALTER TABLE `images`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

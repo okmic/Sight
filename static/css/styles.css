@@ -24,6 +24,7 @@
     border: 1px salmon solid;
     border-radius: 15px;
     max-width: 100%;
+    margin: 1em 0;
 }
 iframe {
     margin: 1em;
@@ -56,4 +57,19 @@ iframe {
 .review span {
     font-size: 25px;
     margin-left: 5px;
+}
+
+.wrapperRandom {
+    animation: show 3s linear forwards;
+}
+@keyframes show {
+    0% {
+        border-radius: 50%;
+        transform:  rotate(360deg);
+    }
+    100% {
+        transform:  rotate(0deg);
+        border: none;
+        top: 0px;
+    }
 }

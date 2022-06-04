@@ -9,7 +9,7 @@
     <%- include('./partials/navbar'); %>
         <div class="container wrapperPlace">
 
-            <% for(var place of data) { %></a>
+            <% for(var place of data) { %>
 
                 <h1 class="navbar-text textPlace">
                     <%= place.title %>
@@ -17,7 +17,13 @@
                 <h3 class="navbar-text textPlace">
                     <%= place.body %>
                 </h3>
+
                 <img src="../<%= place.imgSrc %>" alt="<%= place.title %>">
+
+                    <% for(var img of images) { %>
+                            <img src="../<%= img.img_src %>" alt="<%= place.title %>">
+                    <% } %>
+
                 <h1 class="navbar-text textPlace">Координаты: <%= place.gps %>
                 </h1>
                 <iframe src="<%= place.mapSrc %>" width="90%" height="400" frameborder="0"></iframe>
@@ -25,33 +31,6 @@
             <% } %>
 
             <%- include('./partials/inputsReview'); %>
-
-                <div class="wrapperReview">
-
-                    <% if(reviews.length>= 1) {%>
-                        <% for(var review of reviews) { %>
-                            <div class="containerReview">
-                                <div class="review">
-                                    <% for(var i=0; i < (review.grade); i++) { %>
-                                        <img src="/img/star.png" alt="star">
-                                        <% } %>
-                                            <span class=" textPlace">
-                                                <%= review.grade %>/5
-                                            </span>
-                                </div>
-                                <h1 class="navbar-text textPlace">
-                                    <%= review.name %>
-                                </h1>
-                                <h3 class="navbar-text textPlace">
-                                    <%= review.comment %>
-                                </h3>
-                            </div>
-                            <% } %>
-                                <% } else { %>
-                                    <h1>Отзывов нет</h1>
-                            <% } %>
-
-                </div>
         </div>
 </body>
 
