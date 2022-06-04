@@ -14,6 +14,8 @@
                                 <h1 class="navbar-text textPlace"><%= place.title %></h1>
                                 <h3 class="navbar-text textPlace"><%= place.body %></h3>
                                <img src="../<%= place.imgSrc %>" alt="<%= place.title %>">
+                               <h1 class="navbar-text textPlace">Координаты: <%= place.gps %></h1>
+                               <iframe src="<%= place.mapSrc %>" width="90%" height="400" frameborder="0"></iframe>
                         </div>
                     <% } %>
                 

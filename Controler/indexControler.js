@@ -31,14 +31,14 @@ exports.create = async (req, res) => {
          if (err)
            return res.status(500).send(err);
      
-           const {name, title} = req.body
+           const {name, title, gps} = req.body
       
-           db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`) VALUES " + `(NULL, "${name}", "${title}", "${'img/' + fileName}", CURRENT_TIMESTAMP);`)
+           db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name}", "${title}", "${'img/' + fileName}", CURRENT_TIMESTAMP, NULL, "${gps}");`)
            
            res.redirect('/')
        })} else {
-      const {name, title} = req.body
-      db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`) VALUES " + `(NULL, "${name}", "${title}", 'img/no_image.jpg', CURRENT_TIMESTAMP);`)
+      const {name, title, gps} = req.body
+      db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name}", "${title + ' (на рассмотрении администратором)'}", 'img/no_image.jpg', CURRENT_TIMESTAMP, NULL, "${gps}");`)
       res.redirect('/')
    }
 }
