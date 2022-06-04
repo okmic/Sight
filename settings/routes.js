@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.route('/new').get(indexControler.new)
     app.route('/new/create').post(indexControler.create)
     app.route('/place/:id').get(indexControler.onePlace)
+    app.route('/new/create-review').post(indexControler.createReview)
 }

@@ -1,0 +1,30 @@
+<div class="wrapperReview" style="margin-bottom: 3em;">
+    <h1 class="textPlace">Написать отзыв</h1>
+    <form action="/new/create-review" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="ref_id" id="ref_id" value="<%= data[0].id %>">
+      <div class="form-group">
+        <label class="textPlace" for="name">Имя</label>
+        <input class="form-control" id="name" type="text" name="name">
+      </div>
+      <br>
+      <div class="form-group">
+        <label class="textPlace" for="title">Комментарий</label>
+        <input class="form-control" type="text" id="comment" name="comment">
+      </div>
+      <br>
+  
+      <div class="form-group">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="grade" name="grade">
+          <option selected>Оцените место</option>
+          <option value="1">1/5</option>
+          <option value="2">2/5</option>
+          <option value="3">3/5</option>
+          <option value="4">4/5</option>
+          <option value="5">5/5</option>
+        </select>
+      </div>
+      <br>
+      <input class="btn btn-default" type="submit" value="Записать">
+    </form>
+
+</div>

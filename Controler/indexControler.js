@@ -47,5 +47,18 @@ exports.onePlace  = async (req, res) => {
    const {id} = req.params
    
    const data = await db.get(`SELECT * FROM \`data\` WHERE \`id\` = ${id}`)
-    res.render('place',  {title: 'Кчр', active: 'place', data}) 
+   const reviews = await db.get(`SELECT * FROM \`reviews\` WHERE \`ref_id\` = ${id}`)
+    res.render('place',  {title: 'Кчр', active: 'place', data, reviews}) 
+}
+
+exports.createReview = async (req, res) => {
+   if(!req.body || (req.name  === '')) {
+      return res.send("<h1>Поля не заполнены</h1>")
+   }
+   
+   const {ref_id, name, comment, grade} = req.body
+
+   db.send("INSERT INTO `reviews` (`id`, `ref_id`,`name`, `comment`, `grade`, `date`) VALUES " + `(NULL, "${ref_id}" , "${name}", "${comment}", "${Number(grade)}", CURRENT_TIMESTAMP);`)
+
+   res.redirect(`/place/${ref_id}`)
 }

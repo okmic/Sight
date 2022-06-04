@@ -62,6 +62,26 @@ INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VA
 (20, 'Канатные дороги Архыза', 'В самом поселке Архыз горнолыжных подъемников нет, все они располагаются в поселке Романтик и на Лунной поляне в10 километрах. Именно там проводят большую часть времени любители горных лыж, но интересно будет воспользоваться ими и тем, кто горными лыжами не увлекается. Часть канатных дорог работает, в том числе, и летом. Канатки ведут на вершины и склоны соседних гор, откуда открываются потрясающие виды на горные вершины, покрытые, в том числе и ледниками. При желании можно прогуляться по тропам или горнолыжным трассам, дойти до горных ручьев, или даже спуститься обратно в поселок пешком.', 'img/kanatka.jpg', '2022-05-24 11:07:59', 'https://yandex.ru/map-widget/v1/?um=constructor%3Ada57eb289aaf6f69d4652c68db7747b89fee58595f2bb6d0626e85571d37f956&amp;source=constructor', '43.5632, 41.2813');
 
 --
+-- Структура таблицы `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int NOT NULL,
+  `ref_id` int NOT NULL,
+  `name` text NOT NULL,
+  `comment` text NOT NULL,
+  `grade` int NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Дамп данных таблицы `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `ref_id`,`name`, `comment`, `grade`, `date`) VALUES
+(1, 3, 'Ахмед', 'Был там, очень понравилось', 5, '2022-06-04 14:40:18');
+
+--
 -- Индексы сохранённых таблиц
 --
 
@@ -76,10 +96,27 @@ ALTER TABLE `data`
 --
 
 --
+-- Индексы таблицы `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
 -- AUTO_INCREMENT для таблицы `data`
 --
 ALTER TABLE `data`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+COMMIT;
+
+--
+-- AUTO_INCREMENT для таблицы `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

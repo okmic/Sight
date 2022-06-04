@@ -29,3 +29,31 @@ iframe {
     margin: 1em;
     border-radius: 1em;
 }
+.wrapperReview {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.containerReview {
+    min-width: 300px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-top: 3px solid silver; 
+}
+.review {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1em 0 1em 1em;
+}
+.review img {
+    border: none;
+    max-width: 30px;
+}
+.review span {
+    font-size: 25px;
+    margin-left: 5px;
+}
