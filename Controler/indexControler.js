@@ -33,13 +33,13 @@ exports.create = async (req, res) => {
 
          const { name, title, gps } = req.body
 
-         db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name}", "${title}", "${'img/' + fileName}", CURRENT_TIMESTAMP, NULL, "${gps}");`)
+         db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name.replace(/['"«»]/g, '')}", "${title.replace(/['"«»]/g, '')}", "${'img/' + fileName.replace(/['"«»]/g, '')}", CURRENT_TIMESTAMP, NULL, "${gps.replace(/['"«»]/g, '')}");`)
 
          res.redirect('/')
       })
    } else {
       const { name, title, gps } = req.body
-      db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name}", "${title + ' (на рассмотрении администратором)'}", 'img/no_image.jpg', CURRENT_TIMESTAMP, NULL, "${gps}");`)
+      db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name.replace(/['"«»]/g, '')}", "${title.replace(/['"«»]/g, '') + ' (на рассмотрении администратором)'}", 'img/no_image.jpg', CURRENT_TIMESTAMP, NULL, "${gps.replace(/['"«»]/g, '')}");`)
       res.redirect('/')
    }
 }
