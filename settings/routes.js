@@ -2,7 +2,8 @@
 module.exports = (app) => {
     const indexControler = require('./../Controler/indexControler.js')
 
-    app.route('/').get(indexControler.all)
+    app.route('/').get(indexControler.main)
+    app.route('/places').get(indexControler.all)
     app.route('/new').get(indexControler.new)
     app.route('/new/create').post(indexControler.create)
     app.route('/random').get(indexControler.random)

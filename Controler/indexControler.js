@@ -4,6 +4,10 @@ const db = require('./../settings/db.js')
 const path = require('path')
 
 
+exports.main = async (req, res) => {
+   res.render('main', { title: 'Кчр', active: 'main' })
+}
+
 exports.all = async (req, res) => {
    try {
       const data = await db.get('select * from data')
