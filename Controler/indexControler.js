@@ -61,6 +61,7 @@ exports.onePlace = async (req, res) => {
 }
 
 exports.createReview = async (req, res) => {
+   
    if (!req.body || (req.name === '')) {
       return res.send("<h1>Поля не заполнены</h1>")
    }
