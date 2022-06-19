@@ -37,14 +37,14 @@ exports.create = async (req, res) => {
 
          const { name, title, gps } = req.body
 
-         db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name.replace(/['"«»]/g, '')}", "${title.replace(/['"«»]/g, '')}", "${'img/' + fileName.replace(/['"«»]/g, '')}", CURRENT_TIMESTAMP, NULL, "${gps.replace(/['"«»]/g, '')}");`)
+         db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name.replace(/['"«»]/g, '')}", "${title.replace(/['"«»]/g, '') + ' (на рассмотрении администратором)'}", "${'img/' + fileName.replace(/['"«»]/g, '')}", CURRENT_TIMESTAMP, NULL, "${gps.replace(/['"«»]/g, '')}");`)
 
-         res.redirect('/')
+         res.redirect('/places')
       })
    } else {
       const { name, title, gps } = req.body
       db.send("INSERT INTO `data` (`id`, `title`, `body`, `imgSrc`, `date`, `mapSrc`, `gps`) VALUES " + `(NULL, "${name.replace(/['"«»]/g, '')}", "${title.replace(/['"«»]/g, '') + ' (на рассмотрении администратором)'}", 'img/no_image.jpg', CURRENT_TIMESTAMP, NULL, "${gps.replace(/['"«»]/g, '')}");`)
-      res.redirect('/')
+      res.redirect('/places')
    }
 }
 
@@ -102,6 +102,13 @@ exports.random = async (req, res) => {
 
    const rundom = Math.floor(Math.random() * (max[0]['COUNT(*)'] - 1)) + 1
 
-   res.redirect(`/place/${rundom}`)
+   const data = await db.get(`SELECT * FROM \`data\` WHERE \`id\` = ${rundom}`)
+
+   const images = await db.get(`SELECT * FROM \`images\` WHERE \`ref_id\` = ${rundom}`)
+
+   const reviews = await db.get(`SELECT * FROM \`reviews\` WHERE \`ref_id\` = ${rundom}`)
+
+   res.render('place', { title: 'Кчр', active: 'rundom', data, images, reviews })
+   
 
 }

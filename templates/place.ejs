@@ -7,7 +7,7 @@
 
 <body>
     <%- include('./partials/navbar'); %>
-        <div class="container wrapperPlace">
+        <div class="container wrapperPlace <% if(active === 'rundom') {%> wrapperRandom <%} %>">
 
             <% for(var place of data) { %>
 
